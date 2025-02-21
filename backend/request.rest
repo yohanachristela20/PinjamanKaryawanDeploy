@@ -1,0 +1,28 @@
+GET https://04c4-103-141-189-170.ngrok-free.app/plafond-update
+###
+GET https://04c4-103-141-189-170.ngrok-free.app/plafond/PL003
+
+###
+# POST https://04c4-103-141-189-170.ngrok-free.app/antrean
+# Content-Type: application/json
+
+# {
+#     "id_pinjaman": "P00003"
+# }
+
+
+###
+POST https://04c4-103-141-189-170.ngrok-free.app/plafond-update
+Content-Type: application/json
+
+{
+    "tanggal_plafond_tersedia": 2025-01-13,
+    "plafond_saat_ini": 8300000, 
+    "id_pinjaman": "P000012", 
+
+}
+
+
+###m 
+GET https://04c4-103-141-189-170.ngrok-free.app/plafond/latest-id 
+

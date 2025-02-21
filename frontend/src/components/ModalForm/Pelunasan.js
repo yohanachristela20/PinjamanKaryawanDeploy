@@ -52,7 +52,7 @@ const Pelunasan = ({ showPelunasanModal, setShowPelunasanModal, angsuran, onSucc
 
     const getKaryawanData = async () => {
         try {
-            const response = await axios.get("https://04c4-103-141-189-170.ngrok-free.app/karyawan-data", {
+            const response = await axios.get("http://localhost:5000/karyawan-data", {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -65,7 +65,7 @@ const Pelunasan = ({ showPelunasanModal, setShowPelunasanModal, angsuran, onSucc
 
     const getPinjamanData = async (idPinjaman) => {
         try {
-            const response = await axios.get(`https://04c4-103-141-189-170.ngrok-free.app/pinjaman/${idPinjaman}`, {
+            const response = await axios.get(`http://localhost:5000/pinjaman/${idPinjaman}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -106,7 +106,7 @@ const Pelunasan = ({ showPelunasanModal, setShowPelunasanModal, angsuran, onSucc
                 jumlah_pinjaman,
             };
     
-            const response = await axios.post('https://04c4-103-141-189-170.ngrok-free.app/angsuran', data, {
+            const response = await axios.post('http://localhost:5000/angsuran', data, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -122,7 +122,7 @@ const Pelunasan = ({ showPelunasanModal, setShowPelunasanModal, angsuran, onSucc
 
             if (statusBaru === 'Lunas') {
                 const updatePinjamanResponse = await axios.put(
-                    `https://04c4-103-141-189-170.ngrok-free.app/pinjaman/${id_pinjaman}/status`,
+                    `http://localhost:5000/pinjaman/${id_pinjaman}/status`,
                     { status_pelunasan: statusBaru },
                     {
                         headers: {
@@ -132,7 +132,7 @@ const Pelunasan = ({ showPelunasanModal, setShowPelunasanModal, angsuran, onSucc
                 );   
             } 
 
-            const updateResponse = await axios.put(`https://04c4-103-141-189-170.ngrok-free.app/angsuran/${id_angsuran}`, { status: statusBaru }, {
+            const updateResponse = await axios.put(`http://localhost:5000/angsuran/${id_angsuran}`, { status: statusBaru }, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

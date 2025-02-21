@@ -8,7 +8,7 @@ const UpdateStatusChecker = () => {
     useEffect(() => {
         const checkUpdateStatus = async () => {
             try {
-                const response = await axios.get("https://04c4-103-141-189-170.ngrok-free.app/status-update");
+                const response = await axios.get("http://localhost:5000/status-update");
                 setUpdateStatus(response.data.status);
 
                 if (response.data.status === "updated") {

@@ -20,7 +20,7 @@ const ImportUser = ({showImportModal, setShowImportModal, onSuccess}) => {
     const formData = new FormData();
     formData.append("csvfile", file);
 
-    fetch("https://04c4-103-141-189-170.ngrok-free.app/user/import-csv", {
+    fetch("http://localhost:5000/user/import-csv", {
       method: "POST",
       body: formData,
       headers: {

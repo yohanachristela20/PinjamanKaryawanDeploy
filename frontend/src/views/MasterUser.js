@@ -52,7 +52,7 @@ function MasterUser() {
 
   const getUser = async () =>{
     try {
-      const response = await axios.get("https://04c4-103-141-189-170.ngrok-free.app/user", {
+      const response = await axios.get("http://localhost:5000/user", {
         headers: {
           Authorization: `Bearer ${token}`,
       },
@@ -67,7 +67,7 @@ function MasterUser() {
 
   const deleteUser = async(id_user) =>{
     try {
-      await axios.delete(`https://04c4-103-141-189-170.ngrok-free.app/user/${id_user}` , {
+      await axios.delete(`http://localhost:5000/user/${id_user}` , {
         headers: {
           Authorization: `Bearer ${token}`,
       },
@@ -90,7 +90,7 @@ function MasterUser() {
 
     try {
       const response = await axios.get(
-        `https://04c4-103-141-189-170.ngrok-free.app/user-details/${username}`,
+        `http://localhost:5000/user-details/${username}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -212,7 +212,7 @@ function MasterUser() {
   const setPassword = async(id_user) => {
     try {
 
-        await axios.put(`https://04c4-103-141-189-170.ngrok-free.app/user/${id_user}`, {
+        await axios.put(`http://localhost:5000/user/${id_user}`, {
         }, {
             headers: {
                 Authorization: `Bearer ${token}`,

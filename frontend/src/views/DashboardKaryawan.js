@@ -15,7 +15,7 @@ import PendingAlert from "components/Alert/PendingAlert.js";
 import AcceptedNextStepAlert from "components/Alert/AcceptedNextStepAlert.js";
 
 
-const BASE_URL = 'https://04c4-103-141-189-170.ngrok-free.app';
+const BASE_URL = 'http://localhost:5000';
 import {
   Card,
   Table,
@@ -105,7 +105,7 @@ function DashboardKaryawan() {
     
         console.log("User token: ", token, "User role:", role);
         try {
-          const response = await axios.get(`https://04c4-103-141-189-170.ngrok-free.app/user-details/${username}`, {
+          const response = await axios.get(`http://localhost:5000/user-details/${username}`, {
             headers: { Authorization: `Bearer ${token}` },
           });
     
@@ -138,7 +138,7 @@ useEffect(() => {
 
 const getNomorAntrean = async() => {
     try {
-      const antreanResponse = await axios.get(`https://04c4-103-141-189-170.ngrok-free.app/antrean/${id_pinjaman}`, {
+      const antreanResponse = await axios.get(`http://localhost:5000/antrean/${id_pinjaman}`, {
         headers: { Authorization: `Bearer ${token}` },
     });
 
@@ -178,7 +178,7 @@ useEffect(() => {
     try {
       setLoadingPlafond(true);
 
-      const response = await axios.get("https://04c4-103-141-189-170.ngrok-free.app/angsuran-berikutnya", {
+      const response = await axios.get("http://localhost:5000/angsuran-berikutnya", {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -276,7 +276,7 @@ useEffect(() => {
   const fetchData = async () => {
     try {
       const responsePlafond = await axios.get(
-        `https://04c4-103-141-189-170.ngrok-free.app/plafond-saat-ini?jumlah_pinjaman=${jumlah_pinjaman || 0}`,
+        `http://localhost:5000/plafond-saat-ini?jumlah_pinjaman=${jumlah_pinjaman || 0}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -309,12 +309,12 @@ useEffect(() => {
           responseTotalDibayar, 
           responseTotalPinjaman,
         ] = await Promise.all([
-            axios.get(`https://04c4-103-141-189-170.ngrok-free.app/angsuran/total-sudah-dibayar/${selectedPinjaman?.id_peminjam}`, {
+            axios.get(`http://localhost:5000/angsuran/total-sudah-dibayar/${selectedPinjaman?.id_peminjam}`, {
                 headers: {
                   Authorization: `Bearer ${token}`,
               },
             }),
-            axios.get(`https://04c4-103-141-189-170.ngrok-free.app/pinjaman/total-pinjaman/${selectedPinjaman?.id_peminjam}`, {
+            axios.get(`http://localhost:5000/pinjaman/total-pinjaman/${selectedPinjaman?.id_peminjam}`, {
                 headers: {
                   Authorization: `Bearer ${token}`,
               },
@@ -355,7 +355,7 @@ useEffect(() => {
           });
     
           const karyawanData = responseKaryawan.data;
-          const pinjamanResponse = await axios.get(`https://04c4-103-141-189-170.ngrok-free.app/pinjaman/total-pinjaman/${karyawanData.id_karyawan}`, {
+          const pinjamanResponse = await axios.get(`http://localhost:5000/pinjaman/total-pinjaman/${karyawanData.id_karyawan}`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -407,7 +407,7 @@ useEffect(() => {
 
   const getPinjaman = async () =>{
     try {
-      const response = await axios.get("https://04c4-103-141-189-170.ngrok-free.app/pinjaman", {
+      const response = await axios.get("http://localhost:5000/pinjaman", {
         headers: {
             Authorization: `Bearer ${token}`,
         },
@@ -423,7 +423,7 @@ useEffect(() => {
   
   const getAntrean = async () => {
     try {
-      const response = await axios.get("https://04c4-103-141-189-170.ngrok-free.app/antrean-pengajuan", {
+      const response = await axios.get("http://localhost:5000/antrean-pengajuan", {
         headers: {
             Authorization: `Bearer ${token}`,
         },
@@ -631,7 +631,7 @@ const calculateRasioAngsuranMemoized = useMemo(() => {
     try {
       console.log("Saving pengajuan with id_pinjaman: ", id_pinjaman);
 
-        await axios.post("https://04c4-103-141-189-170.ngrok-free.app/pinjaman", {
+        await axios.post("http://localhost:5000/pinjaman", {
             id_pinjaman,
             tanggal_pengajuan,
             jumlah_pinjaman,

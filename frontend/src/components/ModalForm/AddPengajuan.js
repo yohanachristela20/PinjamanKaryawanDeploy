@@ -23,7 +23,7 @@ const AddPengajuan = ({ showAddModal, setShowAddModal, onSuccess }) => {
 
     const getPinjaman = async () =>{
         try {
-          const response = await axios.get("https://04c4-103-141-189-170.ngrok-free.app/pinjaman", {
+          const response = await axios.get("http://localhost:5000/pinjaman", {
             headers: {
               Authorization: `Bearer ${token}`,
           },
@@ -36,7 +36,7 @@ const AddPengajuan = ({ showAddModal, setShowAddModal, onSuccess }) => {
 
       const fetchAntrean = async () => {
         try {
-          const response = await axios.get("https://04c4-103-141-189-170.ngrok-free.app/antrean-pengajuan", {
+          const response = await axios.get("http://localhost:5000/antrean-pengajuan", {
             headers: {
               Authorization: `Bearer ${token}`,
           },
@@ -49,7 +49,7 @@ const AddPengajuan = ({ showAddModal, setShowAddModal, onSuccess }) => {
     
     const fetchLatestIdPengajuan = async () => {
         try {
-            const response = await axios.get('https://04c4-103-141-189-170.ngrok-free.app/pinjaman/latest-id', {
+            const response = await axios.get('http://localhost:5000/pinjaman/latest-id', {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -111,7 +111,7 @@ const AddPengajuan = ({ showAddModal, setShowAddModal, onSuccess }) => {
             if (!token || !username) return;
       
             try {
-              const response = await axios.get(`https://04c4-103-141-189-170.ngrok-free.app/user-details/${username}`, {
+              const response = await axios.get(`http://localhost:5000/user-details/${username}`, {
                 headers: { Authorization: `Bearer ${token}` },
               });
       
@@ -141,7 +141,7 @@ const AddPengajuan = ({ showAddModal, setShowAddModal, onSuccess }) => {
     const savePengajuan = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('https://04c4-103-141-189-170.ngrok-free.app/pinjaman', {
+            await axios.post('http://localhost:5000/pinjaman', {
                 id_pinjaman,
                 tanggal_pengajuan,
                 jumlah_pinjaman,

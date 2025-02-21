@@ -42,7 +42,7 @@ const AddKaryawan = ({showAddModal, setShowAddModal, onSuccess}) => {
         }
 
         try {
-            await axios.post('https://04c4-103-141-189-170.ngrok-free.app/karyawan', {
+            await axios.post('http://localhost:5000/karyawan', {
                 id_karyawan,
                 nama, 
                 jenis_kelamin,

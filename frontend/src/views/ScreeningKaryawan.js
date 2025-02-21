@@ -6,7 +6,7 @@ import axios from "axios";
 import {FaCheckCircle, FaTimesCircle, FaHistory} from 'react-icons/fa'; 
 import { useHistory } from "react-router-dom";
 
-const BASE_URL = 'https://04c4-103-141-189-170.ngrok-free.app';
+const BASE_URL = 'http://localhost:5000';
 
 export const fetchHistoryPinjaman = async (idPeminjam) => {
   return axios.get(`${BASE_URL}/history-pinjaman/${idPeminjam}`, {
@@ -80,29 +80,29 @@ function ScreeningKaryawan({ setHasilScreening }) {
           responseTotalJumlahPinjaman,
           responsePlafond,
         ] = await Promise.all([
-          axios.get(`https://04c4-103-141-189-170.ngrok-free.app/angsuran/total-sudah-dibayar/${selectedPinjaman?.id_peminjam}`, {
+          axios.get(`http://localhost:5000/angsuran/total-sudah-dibayar/${selectedPinjaman?.id_peminjam}`, {
             headers: {
               Authorization: `Bearer ${token}`,
           },
           }),
-          axios.get(`https://04c4-103-141-189-170.ngrok-free.app/pinjaman/total-pinjaman/${selectedPinjaman?.id_peminjam}`, {
+          axios.get(`http://localhost:5000/pinjaman/total-pinjaman/${selectedPinjaman?.id_peminjam}`, {
             headers: {
               Authorization: `Bearer ${token}`,
           },
           }),
-          axios.get("https://04c4-103-141-189-170.ngrok-free.app/total-pinjaman-keseluruhan", {
+          axios.get("http://localhost:5000/total-pinjaman-keseluruhan", {
              headers: {
               Authorization: `Bearer ${token}`,
           },
           }),
           await axios.get(
-          `https://04c4-103-141-189-170.ngrok-free.app/plafond-update-saat-ini/${selectedPinjaman.id_pinjaman}`,
+          `http://localhost:5000/plafond-update-saat-ini/${selectedPinjaman.id_pinjaman}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
             },
           }),
-          // axios.get("https://04c4-103-141-189-170.ngrok-free.app/plafond-tersedia", {
+          // axios.get("http://localhost:5000/plafond-tersedia", {
           //   headers: {
           //     Authorization: `Bearer ${token}`,
           // },
@@ -174,7 +174,7 @@ function ScreeningKaryawan({ setHasilScreening }) {
 
 
   const updatePinjamanStatus = (status) => {
-    axios.put(`https://04c4-103-141-189-170.ngrok-free.app/pinjaman/cancel/${selectedPinjaman.id_pinjaman}`, {
+    axios.put(`http://localhost:5000/pinjaman/cancel/${selectedPinjaman.id_pinjaman}`, {
       not_compliant: status, 
     }, {
       headers: {
@@ -192,7 +192,7 @@ function ScreeningKaryawan({ setHasilScreening }) {
 
   const getPlafond = async () =>{
     try {
-      const response = await axios.get("https://04c4-103-141-189-170.ngrok-free.app/plafond");
+      const response = await axios.get("http://localhost:5000/plafond");
       setPlafond(response.data);
     } catch (error) {
       console.error("Error fetching data:", error.message); 
@@ -201,7 +201,7 @@ function ScreeningKaryawan({ setHasilScreening }) {
   
   const getPinjaman = async () =>{
     try {
-      const response = await axios.get("https://04c4-103-141-189-170.ngrok-free.app/pinjaman");
+      const response = await axios.get("http://localhost:5000/pinjaman");
       setPinjaman(response.data);
     } catch (error) {
       console.error("Error fetching data:", error.message); 

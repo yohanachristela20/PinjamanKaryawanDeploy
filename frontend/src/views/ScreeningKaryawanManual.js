@@ -7,7 +7,7 @@ import {FaCheckCircle, FaTimesCircle, FaHistory} from 'react-icons/fa';
 import { useHistory } from "react-router-dom";
 
 
-const BASE_URL = 'https://04c4-103-141-189-170.ngrok-free.app';
+const BASE_URL = 'http://localhost:5000';
 export const fetchHistoryPinjaman = async (idPeminjam) => {
   return axios.get(`${BASE_URL}/history-pinjaman/${idPeminjam}`, {
     headers: {
@@ -84,23 +84,23 @@ function ScreeningKaryawanManual() {
           responseTotalJumlahPinjaman,
           responsePlafond,
         ] = await Promise.all([
-          // axios.get(`https://04c4-103-141-189-170.ngrok-free.app/karyawan/${selectedPinjaman?.id_peminjam}`), 
-          axios.get(`https://04c4-103-141-189-170.ngrok-free.app/angsuran/total-sudah-dibayar/${selectedPinjaman?.id_peminjam}`, {
+          // axios.get(`http://localhost:5000/karyawan/${selectedPinjaman?.id_peminjam}`), 
+          axios.get(`http://localhost:5000/angsuran/total-sudah-dibayar/${selectedPinjaman?.id_peminjam}`, {
             headers: {
               Authorization: `Bearer ${token}`,
           },
           }),
-          axios.get(`https://04c4-103-141-189-170.ngrok-free.app/pinjaman/total-pinjaman/${selectedPinjaman?.id_peminjam}`, {
+          axios.get(`http://localhost:5000/pinjaman/total-pinjaman/${selectedPinjaman?.id_peminjam}`, {
             headers: {
               Authorization: `Bearer ${token}`,
           },
           }),
-          axios.get("https://04c4-103-141-189-170.ngrok-free.app/total-pinjaman-keseluruhan", {
+          axios.get("http://localhost:5000/total-pinjaman-keseluruhan", {
             headers: {
               Authorization: `Bearer ${token}`,
           },
           }),
-          // axios.get("https://04c4-103-141-189-170.ngrok-free.app/plafond-tersedia"),
+          // axios.get("http://localhost:5000/plafond-tersedia"),
         ]);
 
         const totalSudahDibayar = responseTotalSudahDibayar.data.total_sudah_dibayar || 0;
@@ -268,7 +268,7 @@ const handleIdKaryawanKeyPress = async (event) => {
         //   return;
         // }
 
-        const plafondResponse = await axios.get("https://04c4-103-141-189-170.ngrok-free.app/plafond-tersisa", {
+        const plafondResponse = await axios.get("http://localhost:5000/plafond-tersisa", {
           headers: {
             Authorization: `Bearer ${token}`,
         },
@@ -278,7 +278,7 @@ const handleIdKaryawanKeyPress = async (event) => {
         console.log("Plafond tersedia:", plafondTersedia);
 
 
-        const pinjamanResponse = await axios.get(`https://04c4-103-141-189-170.ngrok-free.app/pinjaman/total-pinjaman/${karyawanData.id_karyawan}`, {
+        const pinjamanResponse = await axios.get(`http://localhost:5000/pinjaman/total-pinjaman/${karyawanData.id_karyawan}`, {
           headers: {
             Authorization: `Bearer ${token}`,
         },

@@ -30,7 +30,7 @@ const app = express();
 dotenv.config();
 
 app.use(bodyParser.json());
-app.use(cors({origin: "https://pinjaman-karyawan-deploy.vercel.app"}));
+app.use(cors({origin: "http://localhost:3000"}));
 app.use(express.json());
 
 app.use(UserRoute); // Rute user untuk login, tanpa middleware otentikasi

@@ -12,7 +12,7 @@ const AddPlafond = ({ showAddModal, setShowAddModal, onSuccess }) => {
 
     const fetchLatestIdPlafond = async () => {
         try {
-            const response = await axios.get('https://04c4-103-141-189-170.ngrok-free.app/plafond/latest-id');
+            const response = await axios.get('http://localhost:5000/plafond/latest-id');
             const latestId = response.data.latestId;
             const newId = `PL${String(parseInt(latestId.slice(2)) + 1).padStart(3, '0')}`; 
             setIdPlafond(newId);
@@ -24,7 +24,7 @@ const AddPlafond = ({ showAddModal, setShowAddModal, onSuccess }) => {
     useEffect(() => {
         const fetchNextId = async () => {
             try {
-                const response = await axios.get('https://04c4-103-141-189-170.ngrok-free.app/plafond/getNextPlafondId', {
+                const response = await axios.get('http://localhost:5000/plafond/getNextPlafondId', {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -46,7 +46,7 @@ const AddPlafond = ({ showAddModal, setShowAddModal, onSuccess }) => {
     const savePlafond = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('https://04c4-103-141-189-170.ngrok-free.app/plafond', {
+            await axios.post('http://localhost:5000/plafond', {
                 id_plafond,
                 tanggal_penetapan,
                 jumlah_plafond,

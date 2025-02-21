@@ -8,7 +8,7 @@ const PinjamanRow = ({ pinjaman }) => {
   const token = localStorage.getItem("token");
   const updateStatusPelunasan = async (idPinjaman, statusPelunasan) => {
     try {
-      const response = await fetch(`https://04c4-103-141-189-170.ngrok-free.app/pinjaman/${idPinjaman}/status`, {
+      const response = await fetch(`http://localhost:5000/pinjaman/${idPinjaman}/status`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

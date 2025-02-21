@@ -67,7 +67,7 @@ export const updateUser = async (req, res) => {
 const updatePassword = async (id_karyawan, newPassword) => {
     try {
         const response = await axios.patch(
-            `https://04c4-103-141-189-170.ngrok-free.app/user/${id_karyawan}`,
+            `http://localhost:5000/user/${id_karyawan}`,
             { password: newPassword },
             {
                 headers: {

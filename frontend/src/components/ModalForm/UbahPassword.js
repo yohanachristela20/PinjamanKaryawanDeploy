@@ -30,7 +30,7 @@ function UbahPassword({ show, onHide }) {
         }
 
         try {
-            const response = await axios.post("https://04c4-103-141-189-170.ngrok-free.app/change-password", {
+            const response = await axios.post("http://localhost:5000/change-password", {
                 username,
                 role,
                 oldPassword,
@@ -40,7 +40,7 @@ function UbahPassword({ show, onHide }) {
             alert(response.data.message); 
             
 
-            axios.post("https://04c4-103-141-189-170.ngrok-free.app/logout", {}, {
+            axios.post("http://localhost:5000/logout", {}, {
                   headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
                 }).finally(() => {
                   stopInactivityTimer();

@@ -58,7 +58,7 @@ function Plafond() {
   const getPlafond = async () =>{
     try {
       setLoading(true);
-      const response = await axios.get("https://04c4-103-141-189-170.ngrok-free.app/plafond", {
+      const response = await axios.get("http://localhost:5000/plafond", {
         headers: {
           Authorization: `Bearer ${token}`,
       },

@@ -22,7 +22,7 @@ const EditUser = ({showEditModal, setShowEditModal, user, onSuccess}) => {
     const updateUser = async(e) => {
         e.preventDefault();
         try {
-            await axios.patch(`https://04c4-103-141-189-170.ngrok-free.app/user/${user.id_user}`, {
+            await axios.patch(`http://localhost:5000/user/${user.id_user}`, {
                 id_user,
                 password,
                 role

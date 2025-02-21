@@ -30,7 +30,7 @@ const EditPlafond = ({showEditModal, setShowEditModal, plafond, onSuccess}) => {
         e.preventDefault();
 
         try {
-            await axios.patch(`https://04c4-103-141-189-170.ngrok-free.app/plafond/${plafond.id_plafond}`, {
+            await axios.patch(`http://localhost:5000/plafond/${plafond.id_plafond}`, {
                 id_plafond,
                 tanggal_penetapan,
                 jumlah_plafond,
@@ -53,7 +53,7 @@ const EditPlafond = ({showEditModal, setShowEditModal, plafond, onSuccess}) => {
     }
 
     const getPlafondById = async () => {
-        const response = await axios.get(`https://04c4-103-141-189-170.ngrok-free.app/plafond/${id_plafond}`);
+        const response = await axios.get(`http://localhost:5000/plafond/${id_plafond}`);
         setTanggalPenetapan(response.data.tanggal_penetapan);
         setJumlahPlafond(response.data.jumlah_plafond);
         setKeterangan(response.data.keterangan);

@@ -58,7 +58,7 @@ const EditKaryawan = ({showEditModal, setShowEditModal, karyawan, onSuccess}) =>
         }
 
         try {
-            await axios.patch(`https://04c4-103-141-189-170.ngrok-free.app/karyawan/${karyawan.id_karyawan}`, {
+            await axios.patch(`http://localhost:5000/karyawan/${karyawan.id_karyawan}`, {
                 id_karyawan,
                 nama, 
                 jenis_kelamin,
@@ -85,7 +85,7 @@ const EditKaryawan = ({showEditModal, setShowEditModal, karyawan, onSuccess}) =>
     }
 
     const getKaryawanById = async () => {
-        const response = await axios.get(`https://04c4-103-141-189-170.ngrok-free.app/karyawan/${id}`, {
+        const response = await axios.get(`http://localhost:5000/karyawan/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },

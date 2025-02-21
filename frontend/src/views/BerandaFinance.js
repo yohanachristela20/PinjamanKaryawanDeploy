@@ -114,7 +114,7 @@ function BerandaFinance() {
 
   const fetchAntrean = async () => {
     try {
-      const response = await axios.get("https://04c4-103-141-189-170.ngrok-free.app/antrean-pengajuan", {
+      const response = await axios.get("http://localhost:5000/antrean-pengajuan", {
         headers: {
             Authorization: `Bearer ${token}`,
         },
@@ -145,7 +145,7 @@ function BerandaFinance() {
   useEffect(() => {
     const fetchYears = async () => {
       try {
-        const response = await axios.get("https://04c4-103-141-189-170.ngrok-free.app/filter-piutang", {
+        const response = await axios.get("http://localhost:5000/filter-piutang", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -168,7 +168,7 @@ function BerandaFinance() {
   
       try {
         const response = await axios.get(
-          `https://04c4-103-141-189-170.ngrok-free.app/user-details/${username}`,
+          `http://localhost:5000/user-details/${username}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -190,16 +190,16 @@ function BerandaFinance() {
     const fetchSummaryData = async () => {
       try {
         const [responseTotalPinjaman, responseTotalPeminjam, responseTotalDibayar, responsePlafond] = await Promise.all([
-          axios.get("https://04c4-103-141-189-170.ngrok-free.app/total-pinjaman-keseluruhan", {
+          axios.get("http://localhost:5000/total-pinjaman-keseluruhan", {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get("https://04c4-103-141-189-170.ngrok-free.app/total-peminjam", {
+          axios.get("http://localhost:5000/total-peminjam", {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get("https://04c4-103-141-189-170.ngrok-free.app/total-dibayar", {
+          axios.get("http://localhost:5000/total-dibayar", {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get("https://04c4-103-141-189-170.ngrok-free.app/latest-plafond-saat-ini", {
+          axios.get("http://localhost:5000/latest-plafond-saat-ini", {
             headers: { Authorization: `Bearer ${token}` },
           }),
         ]);
@@ -246,7 +246,7 @@ function BerandaFinance() {
   const getPinjaman = async () =>{
     try {
       setLoading(true);
-      const response = await axios.get("https://04c4-103-141-189-170.ngrok-free.app/pinjaman", {
+      const response = await axios.get("http://localhost:5000/pinjaman", {
         headers: {
             Authorization: `Bearer ${token}`,
         },
@@ -262,7 +262,7 @@ function BerandaFinance() {
   const getPinjamanData = async () =>{
     try {
       setLoading(true);
-      const response = await axios.get("https://04c4-103-141-189-170.ngrok-free.app/pinjaman-data", {
+      const response = await axios.get("http://localhost:5000/pinjaman-data", {
         headers: {
             Authorization: `Bearer ${token}`,
         },
@@ -279,7 +279,7 @@ function BerandaFinance() {
   const getAntrean = async () => {
     try {
       setLoading(true);
-      const response = await axios.get("https://04c4-103-141-189-170.ngrok-free.app/antrean-pengajuan", {
+      const response = await axios.get("http://localhost:5000/antrean-pengajuan", {
         headers: {
             Authorization: `Bearer ${token}`,
         },
@@ -341,7 +341,7 @@ function BerandaFinance() {
 
       // Update status_pengajuan
       console.log("ID Pinjaman:", pinjaman.id_pinjaman);
-      const response = await axios.put(`https://04c4-103-141-189-170.ngrok-free.app/pinjaman/${pinjaman.id_pinjaman}`, {
+      const response = await axios.put(`http://localhost:5000/pinjaman/${pinjaman.id_pinjaman}`, {
         status_pengajuan: pinjaman.status_pengajuan,
         status_transfer: "Selesai", 
         id_asesor: userData.id_karyawan, 
@@ -394,7 +394,7 @@ function BerandaFinance() {
 
   const updateNomorAntrean = async (idAntrean, nomorAntreanBaru) => {
     try {
-      const response = await axios.post('https://04c4-103-141-189-170.ngrok-free.app/update-antrean', {
+      const response = await axios.post('http://localhost:5000/update-antrean', {
         id_antrean: idAntrean,
         nomor_antrean_baru: nomorAntreanBaru
       });
@@ -407,7 +407,7 @@ function BerandaFinance() {
 
   const deleteNomorAntrean = async (nomorAntrean) => {
     try {
-      const response = await axios.delete(`https://04c4-103-141-189-170.ngrok-free.app/delete-antrean/${nomorAntrean}`);
+      const response = await axios.delete(`http://localhost:5000/delete-antrean/${nomorAntrean}`);
       console.log(response.data.message); // Menampilkan pesan sukses
       getAntrean(); // Update data antrean setelah dihapus
     } catch (error) {
@@ -533,7 +533,7 @@ function BerandaFinance() {
   
   const dataPinjaman = async (selectedYear) => {
     try {
-      const response = await axios.get("https://04c4-103-141-189-170.ngrok-free.app/data-pinjaman", {
+      const response = await axios.get("http://localhost:5000/data-pinjaman", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -572,7 +572,7 @@ function BerandaFinance() {
 
   const dataPerDivisi = async (selectedDepartemen, selectedMonth = "", selectedYear = "") => {
     try {
-      const response = await axios.get("https://04c4-103-141-189-170.ngrok-free.app/data-divisi", {
+      const response = await axios.get("http://localhost:5000/data-divisi", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

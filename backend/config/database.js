@@ -1,34 +1,30 @@
 import { Sequelize } from "sequelize";
+import mysql from "mysql2";
 
-// const db = new Sequelize('peminjaman_karyawan', 'root', '', {
-//     host: 'localhost', 
+// const db = new Sequelize("peminjaman_karyawan", "root", "", {
+//     host: "localhost", 
 //     dialect: 'mysql',
 //     timezone: "+07:00", //Indonesian timezone
 //     dialectOptions: {
 //         timezone: "local", 
 //     },
-//     logging: console.log
+//     logging: false,
 // });
 
-const db = new Sequelize("peminjaman_karyawan", "root", "", {
-    host: "localhost", 
-    dialect: 'mysql',
-    timezone: "+07:00", //Indonesian timezone
-    dialectOptions: {
-        timezone: "local", 
-    },
-    logging: false,
+const db = mysql.createPool({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DBNAME,
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
 
-    //Connection pool -> connecting to the database from multiple process. 
-    // Contoh: cron job untuk potongan angsuran otomatis harus berjalan terus dari sisi backend
-    // tapi di sisi lain, user harus di logout otomatis ketika session berakhir 
-    // Jadi, backend harus nyala terus meskipun user sudah di logout otomatis
-    pool: { 
-        max: 20, // max connection user dalam pool
-        min: 0,  // min connection idle
-        acquire: 120000, // timeout untuk mendapat koneksi: 60 detik
-        idle: 60000 // Idle: to make client connected to db but isn't currently executing any queries
-    }
 });
 
-export default db; 
+db.getConnection((err, conn) => {
+    if(err) console.log(err)
+    console.log("Connected successfully")
+})
+
+module.exports = db.promise()
